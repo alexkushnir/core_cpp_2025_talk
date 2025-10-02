@@ -4,7 +4,7 @@ if (NOT CMAKE_PROJECT_TOP_LEVEL_INCLUDES)
     set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES 
         ${CMAKE_SOURCE_DIR}/cmake/conan_provider.cmake)
 else()
-    message("CMAKE_PROJECT_TOP_LEVEL_INCLUDES already set to ${CMAKE_PROJECT_TOP_LEVEL_INCLUDES}")
+    message("CMAKE_PROJECT_TOP_LEVEL_INCLUDES is already set")
 endif()
 
 project(json_parser)
@@ -20,6 +20,4 @@ find_package(nlohmann_json REQUIRED)
 add_executable(json_parser Main.cpp)
 target_link_libraries(json_parser PRIVATE nlohmann_json::nlohmann_json)
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/example.json 
-    ${CMAKE_CURRENT_BINARY_DIR}
-    COPYONLY)
+    ${CMAKE_CURRENT_SOURCE_DIR}/example.json ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
